@@ -45,7 +45,7 @@ public class BJ2206_벽부수고이동하기 {
         M = sc.nextInt();
 
         map = new int[N][M];
-        visited = new boolean[N][M][2];
+        visited = new boolean[N][M][2]; //
 
         for (int n = 0; n < N; n++) {
             String str = sc.next();
@@ -79,22 +79,6 @@ public class BJ2206_벽부수고이동하기 {
 
             if (x == N-1 && y == M-1){
                 if(count > dis) count = dis;
-                //----체크----
-//                for (int i = 0; i < N; i++) {
-//                    for (int j = 0; j < M; j++) {
-//                        System.out.print(visited[i][j]+" ");
-//                    }
-//                    System.out.println();
-//                }
-//                System.out.println();
-//                for (int i = 0; i < N; i++) {
-//                    for (int j = 0; j < M; j++) {
-//                        System.out.print(copyMap[i][j]+" ");
-//                    }
-//                    System.out.println();
-//                }
-//                System.out.println();
-                //----체크-----
                 return;
             }
             //visited[x][y] = true;
@@ -129,6 +113,7 @@ public class BJ2206_벽부수고이동하기 {
                         visited[sx][sy][1] = true;
                         queue.offer(new punch(sx, sy, dis+1, false));
                     }
+
                 } else if (map[sx][sy] == 0) { // 벽이 아니면
                     //cVisit[sx][sy] = true;
                     if(p && !visited[sx][sy][1]) {
