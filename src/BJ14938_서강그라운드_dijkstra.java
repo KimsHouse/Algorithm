@@ -57,10 +57,10 @@ public class BJ14938_서강그라운드_dijkstra {
             }
         }
 
-        for (int k = 1; k <= N; k++) {
-            for (int i = 1; i <= N; i++) {
-                for (int j = 1; j <= N; j++) {
-                    if(copy[i][k] + copy[k][j] < copy[i][j] && (i != j && j != k && i != k)){
+        for (int k = N; k >= 1; k--) { // 경유지
+            for (int i = 1; i <= N; i++) { // 출발
+                for (int j = 1; j <= N; j++) { // 도착
+                    if(copy[i][k] + copy[k][j] < copy[i][j] && (i != j && j != k && i != k)){ // Integer.MAX_VALUE 일떄 넣는 경우가 있음
                         copy[i][j] = copy[i][k] + copy[k][j];
                     }
                 }
