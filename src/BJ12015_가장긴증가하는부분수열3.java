@@ -1,9 +1,10 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.*;
+import java.util.Arrays;
+import java.util.StringTokenizer;
 
-public class BJ12015_가장긴증가하는부분수열2 {
+public class BJ12015_가장긴증가하는부분수열3 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer tk;
@@ -22,6 +23,7 @@ public class BJ12015_가장긴증가하는부분수열2 {
         //System.out.println(Arrays.toString(arr));
     }
     private static void LIS(int[] arr, int N){
+        StringBuilder sb = new StringBuilder();
         int[] list = new int[N];
         Arrays.fill(list, Integer.MIN_VALUE);
         int LIS = 0;
@@ -40,6 +42,13 @@ public class BJ12015_가장긴증가하는부분수열2 {
         //System.out.println(Arrays.toString(list));
         //System.out.println(Arrays.toString(arr));
         System.out.println(LIS);
+        for (int i = 0; i < N; i++) {
+            if(list[i] == Integer.MIN_VALUE) break;
+            sb.append(list[i]).append(" ");
+        }
+        System.out.println(sb);
+        System.out.println(Arrays.toString(list));
+        System.out.println(Arrays.toString(arr));
 
     }
 

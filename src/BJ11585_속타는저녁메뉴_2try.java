@@ -1,45 +1,48 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class BJ11585_속타는저녁메뉴 {
-    static int cnt;
+public class BJ11585_속타는저녁메뉴_2try {
+    static int N, cnt;
 
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer tk1;
         StringTokenizer tk2;
 
-        int N = Integer.parseInt(br.readLine());
-        char[] dolimpan = new char[N];
+        N = Integer.parseInt(br.readLine());
+        char[] dolimpan = new char[N*2];
         char[] answer = new char[N];
+        char[] result = new char[N*2];
         StringBuilder sb = new StringBuilder();
 
         tk1 = new StringTokenizer(br.readLine()," ");
         tk2 = new StringTokenizer(br.readLine()," ");
 
         for (int i = 0; i < N; i++) {
-            dolimpan[i] = tk1.nextToken().charAt(0);
-        }
-        for (int i = 0; i < N; i++) {
-            answer[i] = tk2.nextToken().charAt(0);
+            char c = tk1.nextToken().charAt(0);
+            char c2 = tk2.nextToken().charAt(0);
+            dolimpan[i] = c;
+            dolimpan[N+i] = c;
+            answer[i] = c2;
+            //System.out.println((N+i));
         }
 
         String p = String.valueOf(answer[0]);
-        int[] num = makeArr(answer);
+//        int[] num = makeArr(answer);
+//
+//        System.out.println(Arrays.toString(num));
 
-        System.out.println(Arrays.toString(num));
-
-//        kmp(dolimpan, answer, p);
-//        int g = gcd(cnt, dolimpan.length);
-//        int a = cnt / g;
-//        int b = dolimpan.length / g;
-//        //System.out.println(cnt);
-//        sb.append(a).append("/").append(b);
-//        System.out.println(sb);
+        kmp(dolimpan, answer);
+//        System.out.println(N);
+        int g = gcd(cnt, N);
+        int a = cnt / g;
+        int b = N / g;
+//        System.out.println(cnt);
+        sb.append(a).append("/").append(b);
+        System.out.println(sb);
 //        //System.out.println(Arrays.toString(answer));
     }
 
@@ -54,20 +57,21 @@ public class BJ11585_속타는저녁메뉴 {
         //System.out.println(length+" "+cnt);
     }
 
-    private static void kmp(char[] dolimpan, char[] pat, String pattern) {
-        char[] answer = pattern.toCharArray();
-        int[] arr = makeArr(answer);
-        String dol = new String(dolimpan);
-        String p = new String(pat);
+    private static void kmp(char[] dolimpan, char[] pat) {
+        //char[] answer = pattern.toCharArray();
+
+        int[] arr = makeArr(pat);
+//        String dol = new String(dolimpan);
+//        String p = new String(pat);
 
 
-        //System.out.println(Arrays.toString(arr));
+        System.out.println(Arrays.toString(arr));
         int j = 0;
         for (int i = 0; i < dolimpan.length; i++) {
-            while (j > 0 && dolimpan[i] != answer[j]) j = arr[j-1];
-
-            if(dolimpan[i] == answer[j]) {
-                if(j == answer.length-1){
+            while (j > 0 && dolimpan[i] != pat[j]) j = arr[j-1];
+            if(dolimpan[i] == pat[j]) {
+                if(j == pat.length-1 && (i-pat.length+2) <= N){
+                    System.out.println("어디야 : "+(i-pat.length+2));
 //                    //System.out.println("hi");
 //                    String strchk = "";
 //
@@ -79,10 +83,9 @@ public class BJ11585_속타는저녁메뉴 {
 //
 //                    if(p.contentEquals(sb)) cnt++;
 //
-//                    //cnt++;
+                    cnt++;
                     j = arr[j];
                 }
-
                 else j++;
             }
 
