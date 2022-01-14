@@ -84,14 +84,14 @@ public class BJ17406_배열돌리기 {
 
             }
 
-//            System.out.println("af");
-//            for (int i = 1; i <= N; i++) {
-//                for (int j = 1; j <= M; j++) {
-//                    System.out.print(arr[i][j]+" ");
-//                }
-//                System.out.println();
-//            }
-//            System.out.println();
+            System.out.println("af");
+            for (int i = 1; i <= N; i++) {
+                for (int j = 1; j <= M; j++) {
+                    System.out.print(arr[i][j]+" ");
+                }
+                System.out.println();
+            }
+            System.out.println();
 
             for (int j = 1; j <= N; j++) {
                 int sum = 0;
