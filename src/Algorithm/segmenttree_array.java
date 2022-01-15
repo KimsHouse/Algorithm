@@ -3,18 +3,19 @@ package Algorithm;
 import java.util.Arrays;
 
 public class segmenttree_array {
-    static int N = 12;
-    static int[] arr = {1, 2, 3, 4, 5, 6, 7 ,8, 9, 10, 11, 12};
+    static int N = 5;
+    //static int[] arr = {1, 2, 3, 4, 5, 6, 7 ,8, 9, 10, 11, 12};
+    static int[] arr = {0, 1, 2, 3, 4, 5};
     static int[] tree;
     public static void main(String[] args) {
         tree = new int[N * 4];
 
-        System.out.println(segment_sum(arr, 1, 0, N-1)); // 구간합 가능
+        System.out.println(segment_sum(arr, 1, 0, N)); // 구간합 가능
 
         System.out.println("tree : "+Arrays.toString(tree));
         //System.out.println(queryRec(3, N-2, 1, 0, N-1));
-        System.out.println(updateRec(3, 6, 1, 0, N-1));
-        System.out.println(queryRec(3, N-2, 1, 0, N-1));
+        System.out.println(updateRec(3, 6, 1, 0, N));
+        System.out.println(queryRec(3, N-1, 1, 0, N));
         //System.out.println("bf : "+Arrays.toString(arr));
         //System.out.println(segment_rep());
         //System.out.println("af : "+Arrays.toString(arr));
