@@ -60,6 +60,7 @@ public class 우선순위큐다익스트라 {
 
         queue.offer(start);
         while (!queue.isEmpty()){
+
             int u = queue.poll();
             //int u = curr[1];
             //if(visited[u]) continue;

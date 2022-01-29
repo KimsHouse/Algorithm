@@ -1,8 +1,8 @@
 import java.io.*;
-import java.util.Arrays;
-import java.util.StringTokenizer;
+        import java.util.Arrays;
+        import java.util.StringTokenizer;
 
-public class BJ2042_구간합구하기 {
+public class BJ11505_구간곱구하기_2try {
     static long[] tree;
     public static void main(String[] args) throws IOException, NumberFormatException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -24,7 +24,7 @@ public class BJ2042_구간합구하기 {
 
         buildArr(arr, 1, 0, N);
 
-        System.out.println(Arrays.toString(tree));
+        //System.out.println(Arrays.toString(tree));
         StringBuilder sb = new StringBuilder();
         for(int nk = 0; nk < M+K; nk++){
             tk = new StringTokenizer(br.readLine(), " ");
@@ -38,20 +38,20 @@ public class BJ2042_구간합구하기 {
             }
             else if(a == 2) {
                 int c = Integer.parseInt(tk.nextToken());
-                sb.append(sumArr(b, c, 1, 0, N)).append("\n");
+                sb.append(sumArr(b, c, 1, 0, N)/1000000007).append("\n");
             }
         }
 
-        //System.out.println(sb);
-        bw.write(sb.toString());
-        bw.flush();
-        bw.close();
-        br.close();
+        System.out.println(sb);
+        //bw.write(sb.toString());
+        //bw.flush();
+        //bw.close();
+        //br.close();
 
     }
 
     private static long sumArr(int start, int end, int node, int nodeLeft, int nodeRight){
-        if(end < nodeLeft || nodeRight < start) return 0;
+        if(end < nodeLeft || nodeRight < start) return 1;
 
         if(start <= nodeLeft && nodeRight <= end) return tree[node];
 
@@ -84,6 +84,6 @@ public class BJ2042_구간합구하기 {
         return tree[node] = merge(leftVal, rightVal);
     }
 
-    private static long merge(long left, long right) {return left + right;}
+    private static long merge(long left, long right) {return left * right;}
 
 }

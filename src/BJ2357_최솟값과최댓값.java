@@ -1,4 +1,6 @@
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
@@ -26,7 +28,7 @@ public class BJ2357_최솟값과최댓값 {
         segment_max(arr, 1, 0, N);
 
         //System.out.println(Arrays.toString(mintree));
-        //System.out.println(Arrays.toString(maxtree));
+        System.out.println(Arrays.toString(maxtree));
 
 
         for (int i = 0; i < M; i++) {

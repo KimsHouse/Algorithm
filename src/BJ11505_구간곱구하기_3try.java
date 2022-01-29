@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class BJ2042_구간합구하기 {
+public class BJ11505_구간곱구하기_3try {
     static long[] tree;
     public static void main(String[] args) throws IOException, NumberFormatException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -34,44 +34,20 @@ public class BJ2042_구간합구하기 {
 
             if(a == 1) {
                 long c = Long.parseLong(tk.nextToken());
-                updateArr(b, c, 1, 0, N);
+                //updateArr(b, c, 1, 0, N);
             }
             else if(a == 2) {
                 int c = Integer.parseInt(tk.nextToken());
-                sb.append(sumArr(b, c, 1, 0, N)).append("\n");
+                //sb.append(sumArr(b, c, 1, 0, N)/1000000007).append("\n");
             }
         }
 
-        //System.out.println(sb);
-        bw.write(sb.toString());
-        bw.flush();
-        bw.close();
-        br.close();
+        System.out.println(sb);
+        //bw.write(sb.toString());
+        //bw.flush();
+        //bw.close();
+        //br.close();
 
-    }
-
-    private static long sumArr(int start, int end, int node, int nodeLeft, int nodeRight){
-        if(end < nodeLeft || nodeRight < start) return 0;
-
-        if(start <= nodeLeft && nodeRight <= end) return tree[node];
-
-        int mid = nodeLeft + (nodeRight - nodeLeft)/2;
-        long leftVal = sumArr(start, end, node * 2, nodeLeft, mid);
-        long rightVal = sumArr(start, end, node * 2 + 1, mid + 1, nodeRight);
-
-        return merge(leftVal, rightVal);
-    }
-
-    private static long updateArr(int index, long newValue, int node, int nodeLeft, int nodeRight){
-        if(index < nodeLeft || nodeRight < index) return tree[node];
-
-        if(nodeLeft == nodeRight) return tree[node] = newValue;
-
-        int mid = nodeLeft + (nodeRight - nodeLeft)/2;
-        long leftVal = updateArr(index, newValue, node * 2, nodeLeft, mid);
-        long rightVal = updateArr(index, newValue, node * 2 + 1, mid + 1, nodeRight);
-
-        return tree[node] = merge(leftVal, rightVal);
     }
 
     private static long buildArr(long[] arr, int node, int nodeLeft, int nodeRight){
@@ -84,6 +60,6 @@ public class BJ2042_구간합구하기 {
         return tree[node] = merge(leftVal, rightVal);
     }
 
-    private static long merge(long left, long right) {return left + right;}
+    private static long merge(long left, long right) {return left * right;}
 
 }
